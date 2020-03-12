@@ -1,0 +1,91 @@
+[
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink",
+        "buyOnIBooks": "myOtherLink",
+        "buyOnPlayStore": "myThirdLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink",
+        "buyOnPlayStore": "myThirdLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink",
+        "buyOnIBooks": "myOtherLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnIBooks": "myOtherLink",
+        "buyOnPlayStore": "myThirdLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.1",
+        "buyOnAmazon": "myLink",
+        "buyOnIBooks": "myOtherLink",
+        "buyOnPlayStore": "myThirdLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnIBooks": "myOtherLink",
+        "buyOnPlayStore": "myThirdLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnAmazon": "myLink",
+        "buyOnIBooks": "myOtherLink"
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "thumbnailURLSmall": "http://placekitten.com/200/300",
+        "yearPublished": "1851",
+        "rating": "9.3",
+        "buyOnPlayStore": "myThirdLink"
+    }
+]
