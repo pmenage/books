@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Books from "./components/Books";
+import Books from "@/components/Books";
 
 export default {
 	name: "App",
@@ -17,3 +17,12 @@ export default {
 	}
 };
 </script>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,600,700,800,900");
+
+#app {
+	font-family: "Rubik", sans-serif;
+	background-color: #f5f1ed;
+}
+</style>
