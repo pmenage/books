@@ -1,0 +1,24 @@
+{
+  "name": "question-5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "build": "rimraf build && tsc",
+    "start:prod": "npm run build && node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^13.9.0",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.6.2"
+  }
+}
