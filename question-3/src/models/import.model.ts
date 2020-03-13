@@ -1,16 +1,25 @@
+import { JobState } from '../helpers/job.helper';
+
+export enum ImportType {
+    WORD = 'word',
+    PDF = 'pdf',
+    WATTPAD = 'wattpad',
+    EVERNOTE = 'evernote',
+}
+
 export class ImportModel {
     bookId: string;
-    type: 'word' | 'pdf' | 'wattpad' | 'evernote';
+    type: ImportType;
     url: string;
-    state: 'pending' | 'finished';
+    state: JobState;
     createdAt: number;
     updatedAt: number;
 
-    constructor(bookId: string, type: 'word' | 'pdf' | 'wattpad' | 'evernote', url: string) {
+    constructor(bookId: string, type: ImportType, url: string) {
         this.bookId = bookId;
         this.type = type;
         this.url = url;
-        this.state = 'pending';
+        this.state = JobState.PENDING;
         this.createdAt = Date.now();
         this.updatedAt = Date.now();
     }

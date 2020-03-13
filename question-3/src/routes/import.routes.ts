@@ -1,6 +1,6 @@
-import { Request, Response, Router } from "express";
-import { ImportController } from "../controllers/import.controller";
-import { importValidationRules, validate } from "../validators/validator";
+import { Request, Response, Router } from 'express';
+import { ImportController } from '../controllers/import.controller';
+import { importValidationRules, validate } from '../validators/validator';
 
 class ImportRoutes {
     public router: Router = Router();

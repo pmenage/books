@@ -1,20 +1,20 @@
 import { Request, Response } from 'express';
-import { ExportModel } from '../models/export.model';
-import { getExportJobDuration } from '../helpers/job.helper';
+import { ExportModel, ExportType } from '../models/export.model';
+import { getExportJobDuration, JobState } from '../helpers/job.helper';
 
 export class ExportController {
     exportModelList: ExportModel[] = [
         {
             bookId: '06e8d6dd-f0d5-4d84-a13b-82fe1db58a6f',
-            type: 'epub',
-            state: 'finished',
+            type: ExportType.EPUB,
+            state: JobState.FINISHED,
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
         {
             bookId: 'eefac8a5-18cb-4a93-9b80-9bab1d185e40',
-            type: 'pdf',
-            state: 'finished',
+            type: ExportType.PDF,
+            state: JobState.FINISHED,
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
@@ -46,7 +46,7 @@ export class ExportController {
             if (timeoutIndex > -1) {
                 this.timeoutIds.splice(timeoutIndex, 1);
             }
-            this.exportModelList[index].state = 'finished';
+            this.exportModelList[index].state = JobState.FINISHED;
             this.exportModelList[index].updatedAt = Date.now();
         }, timeout);
 

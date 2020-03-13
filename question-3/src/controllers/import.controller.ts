@@ -1,22 +1,22 @@
 import { Request, Response } from 'express';
-import { ImportModel } from '../models/import.model';
-import { getImportJobDuration } from '../helpers/job.helper';
+import { ImportModel, ImportType } from '../models/import.model';
+import { getImportJobDuration, JobState } from '../helpers/job.helper';
 
 export class ImportController {
     importModelList: ImportModel[] = [
         {
             bookId: 'e0ca5478-4d53-4252-b3d3-21b0d12b13e9',
-            type: 'word',
+            type: ImportType.WORD,
             url: 'http://www.example.com',
-            state: 'finished',
+            state: JobState.FINISHED,
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
         {
             bookId: '53c7a69a-8ef1-44ce-92e2-f1dcf0402bfa',
-            type: 'pdf',
+            type: ImportType.EVERNOTE,
             url: 'http://www.example.com',
-            state: 'finished',
+            state: JobState.FINISHED,
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
@@ -48,7 +48,7 @@ export class ImportController {
             if (timeoutIndex > -1) {
                 this.timeoutIds.splice(timeoutIndex, 1);
             }
-            this.importModelList[index].state = 'finished';
+            this.importModelList[index].state = JobState.FINISHED;
             this.importModelList[index].updatedAt = Date.now();
         }, timeout);
 

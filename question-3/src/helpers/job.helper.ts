@@ -1,4 +1,12 @@
-export const getImportJobDuration = (type: 'word' | 'pdf' | 'wattpad' | 'evernote' | 'test'): number => {
+import { ExportType } from '../models/export.model';
+import { ImportType } from '../models/import.model';
+
+export enum JobState {
+    PENDING = 'pending',
+    FINISHED = 'finished',
+}
+
+export const getImportJobDuration = (type: ImportType | 'test'): number => {
     switch (type) {
         case 'word':
         case 'pdf':
@@ -12,11 +20,11 @@ export const getImportJobDuration = (type: 'word' | 'pdf' | 'wattpad' | 'evernot
     }
 }
 
-export const getExportJobDuration = (type: 'epub' | 'pdf' | 'test'): number => {
+export const getExportJobDuration = (type: ExportType | 'test'): number => {
     switch (type) {
-        case 'epub':
+        case ExportType.EPUB:
             return 10000;
-        case 'pdf':
+        case ExportType.PDF:
             return 25000;
         case 'test':
             return 500
