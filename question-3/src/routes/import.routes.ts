@@ -1,5 +1,6 @@
-import { Request, Response, Router } from 'express';
-import { ImportController } from '../controllers/import.controller';
+import { Request, Response, Router } from "express";
+import { ImportController } from "../controllers/import.controller";
+import { importValidationRules, validate } from "../validators/validator";
 
 class ImportRoutes {
     public router: Router = Router();
@@ -13,7 +14,7 @@ class ImportRoutes {
         this.router.get('/', (req: Request, res: Response) =>
             this.importController.findAll(req, res)
         );
-        this.router.post('/', (req: Request, res: Response) =>
+        this.router.post('/', importValidationRules(), validate, (req: Request, res: Response) =>
             this.importController.create(req, res)
         );
     }

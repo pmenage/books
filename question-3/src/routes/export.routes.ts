@@ -1,5 +1,6 @@
-import { Router, Request, Response } from 'express';
-import { ExportController } from '../controllers/export.controller';
+import { Router, Request, Response } from "express";
+import { ExportController } from "../controllers/export.controller";
+import { exportValidationRules, validate } from "../validators/validator";
 
 class ExportRoutes {
     public router: Router = Router();
@@ -13,7 +14,7 @@ class ExportRoutes {
         this.router.get('/', (req: Request, res: Response) =>
             this.exportController.findAll(req, res)
         );
-        this.router.post('/', (req: Request, res: Response) =>
+        this.router.post('/', exportValidationRules(), validate, (req: Request, res: Response) =>
             this.exportController.create(req, res)
         );
     }
