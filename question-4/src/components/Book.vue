@@ -39,24 +39,25 @@ export default {
 </script>
 
 <style lang="sass">
+@import "@/sass/_variables.sass"
 .books-table.theme--light.v-data-table
-    .book-column
-        &__title
-            &__thumbnail
-                height: 100px
-                width: 70px
-                border-radius: 10px
+	.book-column
+		&__title
+			&__thumbnail
+				height: 100px
+				width: 70px
+				border-radius: 10px
 
-            &__information
-                &__title
-                    font-weight: 500
+			&__information
+				&__title
+					font-weight: 500
 
-                &__author
-                    color: #a4a4a4
+				&__author
+					color: $table-secondary-color
 
-        &__buy
-            a
-                text-decoration: none
-                color: #bfd488
-                font-weight: 500
+		&__buy
+			a
+				text-decoration: none
+				color: $table-link-color
+				font-weight: 500
 </style>>

@@ -58,6 +58,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import "@/sass/_variables.sass"
 .books-table.theme--light.v-data-table
 	padding: 10px
 	border-radius: 5px
@@ -69,26 +70,28 @@ export default {
 	thead tr
 		&:last-child th
 			border-bottom: none
-
-		th
 			text-transform: uppercase
-			color: #a4a4a4
+			color: $table-secondary-color
 			font-size: 14px
 			font-weight: 500
 
 			&:not(:first-of-type)
 				text-align: center !important
 
-	tbody tr:not(:last-child)
-		cursor: pointer
-		border-bottom: none
+	tbody
+		tr:not(:last-child)
+			cursor: pointer
+			border-bottom: none
 
-		&:nth-of-type(odd)
-			background-color: #faf9f7
+			&:nth-of-type(odd)
+				background-color: $table-odd-rows-color
 
-		td
-			&:last-child, &:not(.v-data-table__mobile-row)
-				border-bottom: none
+			td
+				&:last-child, &:not(.v-data-table__mobile-row)
+					border-bottom: none
+
+		tr:last-child
+			background-color: $table-odd-rows-color
 
 	.book-description
 		padding: 20px 16px
@@ -96,8 +99,11 @@ export default {
 		strong
 			font-weight: 500
 
+	.v-data-footer
+		border-bottom: none
+
 .table-title.v-toolbar__title
-	color: #2a2a2a
+	color: $table-primary-color
 	font-size: 20px
 	font-weight: 500
 	white-space: normal
