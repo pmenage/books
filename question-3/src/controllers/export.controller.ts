@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { ExportModel } from '../models/export.model';
+import { getExportJobDuration } from '../helpers/job.helper';
 
 export class ExportController {
     exportModelList: ExportModel[] = [
@@ -17,14 +18,8 @@ export class ExportController {
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
-        {
-            bookId: '1488a310-c57b-4e09-9810-194718273aa5',
-            type: 'epub',
-            state: 'finished',
-            createdAt: Date.now(),
-            updatedAt: Date.now(),
-        },
     ];
+    timeoutIds: NodeJS.Timeout[] = [];
 
     findAll(req: Request, res: Response) {
         try {
@@ -36,16 +31,29 @@ export class ExportController {
 
     create(req: Request, res: Response) {
         const index = this.exportModelList.length;
+        const exportModel = req.body.export;
         try {
-            this.exportModelList.push(new ExportModel(req.body.export.bookId, req.body.export.type));
+            this.exportModelList.push(new ExportModel(exportModel.bookId, exportModel.type));
             res.sendStatus(201);
         } catch (e) {
-            res.status(500).send(e.message);
+            return res.status(500).send(e.message);
         }
 
-        setTimeout(() => {
+        const timeout = getExportJobDuration(exportModel.type);
+
+        const timeoutId = setTimeout(() => {
+            const timeoutIndex = this.timeoutIds.indexOf(timeoutId);
+            if (timeoutIndex > -1) {
+                this.timeoutIds.splice(timeoutIndex, 1);
+            }
             this.exportModelList[index].state = 'finished';
             this.exportModelList[index].updatedAt = Date.now();
-        }, 5000)
+        }, timeout);
+
+        this.timeoutIds.push(timeoutId);
     };
+
+    clearTimeouts() {
+        this.timeoutIds.forEach(timeoutId => clearTimeout(timeoutId));
+    }
 }

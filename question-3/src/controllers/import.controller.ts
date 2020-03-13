@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { ImportModel } from '../models/import.model';
+import { getImportJobDuration } from '../helpers/job.helper';
 
 export class ImportController {
     importModelList: ImportModel[] = [
         {
             bookId: 'e0ca5478-4d53-4252-b3d3-21b0d12b13e9',
             type: 'word',
-            url: 'url1',
+            url: 'http://www.example.com',
             state: 'finished',
             createdAt: Date.now(),
             updatedAt: Date.now(),
@@ -14,20 +15,13 @@ export class ImportController {
         {
             bookId: '53c7a69a-8ef1-44ce-92e2-f1dcf0402bfa',
             type: 'pdf',
-            url: 'url2',
+            url: 'http://www.example.com',
             state: 'finished',
             createdAt: Date.now(),
             updatedAt: Date.now(),
         },
-        {
-            bookId: 'a80aa5d4-ed86-4d16-b063-db03bf869694',
-            type: 'wattpad',
-            url: 'url3',
-            state: 'finished',
-            createdAt: Date.now(),
-            updatedAt: Date.now(),
-        }
     ];
+    timeoutIds: NodeJS.Timeout[] = [];
 
     findAll(req: Request, res: Response) {
         try {
@@ -39,16 +33,29 @@ export class ImportController {
 
     create(req: Request, res: Response) {
         const index = this.importModelList.length;
+        const importModel = req.body.import;
         try {
-            this.importModelList.push(new ImportModel(req.body.import.bookId, req.body.import.type, req.body.import.url));
+            this.importModelList.push(new ImportModel(importModel.bookId, importModel.type, importModel.url));
             res.sendStatus(201);
         } catch (e) {
-            res.status(500).send(e.message);
+            return res.status(500).send(e.message);
         }
 
-        setTimeout(() => {
+        const timeout = getImportJobDuration(importModel.type);
+
+        const timeoutId = setTimeout(() => {
+            const timeoutIndex = this.timeoutIds.indexOf(timeoutId);
+            if (timeoutIndex > -1) {
+                this.timeoutIds.splice(timeoutIndex, 1);
+            }
             this.importModelList[index].state = 'finished';
             this.importModelList[index].updatedAt = Date.now();
-        }, 5000)
+        }, timeout);
+
+        this.timeoutIds.push(timeoutId);
     };
+
+    clearTimeouts() {
+        this.timeoutIds.forEach(timeoutId => clearTimeout(timeoutId));
+    }
 }
