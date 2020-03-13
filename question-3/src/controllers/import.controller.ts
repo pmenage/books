@@ -33,7 +33,7 @@ export class ImportController {
 
     create(req: Request, res: Response) {
         const index = this.importModelList.length;
-        const importModel = req.body.import;
+        const importModel = req.body;
         try {
             this.importModelList.push(new ImportModel(importModel.bookId, importModel.type, importModel.url));
             res.sendStatus(201);

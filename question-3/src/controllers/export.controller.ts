@@ -31,7 +31,7 @@ export class ExportController {
 
     create(req: Request, res: Response) {
         const index = this.exportModelList.length;
-        const exportModel = req.body.export;
+        const exportModel = req.body;
         try {
             this.exportModelList.push(new ExportModel(exportModel.bookId, exportModel.type));
             res.sendStatus(201);
