@@ -8,7 +8,8 @@
     "build": "rimraf build && tsc",
     "start:prod": "npm run build && node build/index.js",
     "test": "jest",
-    "test:func": "jest --testPathPattern=\"func.spec.ts\""
+    "test:func": "jest --testPathPattern=\"func.spec.ts\"",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
