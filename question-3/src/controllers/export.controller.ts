@@ -23,7 +23,11 @@ export class ExportController {
 
     findAll(req: Request, res: Response) {
         try {
-            res.status(200).send(this.exportModelList);
+            const exportListByState = {
+                pending: this.exportModelList.filter(exportModel => exportModel.state === JobState.PENDING),
+                finished: this.exportModelList.filter(exportModel => exportModel.state === JobState.FINISHED),
+            }
+            res.status(200).send(exportListByState);
         } catch (e) {
             res.status(404).send(e.message);
         }
@@ -36,7 +40,8 @@ export class ExportController {
             this.exportModelList.push(new ExportModel(exportModel.bookId, exportModel.type));
             res.sendStatus(201);
         } catch (e) {
-            return res.status(500).send(e.message);
+            res.status(500).send(e.message);
+            return;
         }
 
         const timeout = getExportJobDuration(exportModel.type);

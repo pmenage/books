@@ -25,7 +25,11 @@ export class ImportController {
 
     findAll(req: Request, res: Response) {
         try {
-            res.status(200).send(this.importModelList);
+            const importListByState = {
+                pending: this.importModelList.filter(importModel => importModel.state === JobState.PENDING),
+                finished: this.importModelList.filter(importModel => importModel.state === JobState.FINISHED),
+            }
+            res.status(200).send(importListByState);
         } catch (e) {
             res.status(404).send(e.message);
         }
@@ -38,7 +42,8 @@ export class ImportController {
             this.importModelList.push(new ImportModel(importModel.bookId, importModel.type, importModel.url));
             res.sendStatus(201);
         } catch (e) {
-            return res.status(500).send(e.message);
+            res.status(500).send(e.message);
+            return;
         }
 
         const timeout = getImportJobDuration(importModel.type);
