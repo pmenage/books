@@ -1,34 +1,18 @@
-# question-4
+# Question 4: Vue.js
 
-## Project setup
-```
-yarn install
-```
+## Prerequisites
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+- Node 12+
+- yarn 1.22+
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Run `yarn install`.
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## Start
 
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
+Run `yarn start`.
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Test
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To run the functional tests, run `yarn test:unit`.
+
+To run the end-to-end tests, run `yarn test:e2e`.
